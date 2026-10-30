@@ -1,0 +1,41 @@
+name: UkrainianQWERTY
+options:
+  bundleIdPrefix: com.clay1874
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 5.0
+    IPHONEOS_DEPLOYMENT_TARGET: 16.0
+targets:
+  UkrainianQWERTY:
+    type: application
+    platform: iOS
+    sources:
+      - path: ContainerApp
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.clay1874.UkrainianQWERTY
+        PRODUCT_NAME: UkrainianQWERTY
+        INFOPLIST_KEY_CFBundleDisplayName: Ukrainian QWERTY
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
+        GENERATE_INFOPLIST_FILE: YES
+        TARGETED_DEVICE_FAMILY: "1,2"
+    dependencies:
+      - target: UkrainianKeyboard
+        embed: true
+  UkrainianKeyboard:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: KeyboardExtension
+    info:
+      path: KeyboardExtension/Info.plist
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.clay1874.UkrainianQWERTY.Keyboard
+        PRODUCT_NAME: UkrainianKeyboard
+        SKIP_INSTALL: YES
+        APPLICATION_EXTENSION_API_ONLY: YES
+        TARGETED_DEVICE_FAMILY: "1,2"
